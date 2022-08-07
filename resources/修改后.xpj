@@ -7160,7 +7160,59 @@ Begin_Section
 
 	# Define the loading data, choose Moment Curvature, Capacity Orbit, or PM Interaction for loading type.
 	# Required data not defined here is taken from default values.
-End_Section
+
+            Begin_Loading
+            NAME = 03#-2H
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -29697
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMyy = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            
+            Begin_Loading
+            NAME = 03#-2Z
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -36710
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMxx = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            End_Section
 #---------------------------------------
 
 # Begin section definition.
@@ -7400,6 +7452,110 @@ Begin_Section
 	End_Loading
 	#---------------------------------------
 
-End_Section
+
+            Begin_Loading
+            NAME = 04#-2H
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -33683
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMyy = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            
+            Begin_Loading
+            NAME = 04#-2Z
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -47172
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMxx = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            
+            Begin_Loading
+            NAME = 05#-2H
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -38866
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMyy = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            
+            Begin_Loading
+            NAME = 05#-2Z
+            TYPE = Moment Curvature
+            # Constant loads applied at first step - negative is read as compression.
+            ConstAxial = -46765
+
+            # Incrementing load parameters - Positive increments in a positive direction.
+            IncMxx = .1130
+
+            Use_Best_Fit = False
+
+            # Include Plastic Hinge length.
+            Calc_Moment_Rot = False
+
+            # Analysis Parameters.
+            Method = BiSection
+            N_Steps_Before_Yield = 10
+            N_Steps_After_Yield = 20
+            Multiple_On_First_Yield = 2
+            BS_Tol = 4.448
+            BS_Max_Itter = 40
+
+
+            End_Loading
+
+            End_Section
 #---------------------------------------
 

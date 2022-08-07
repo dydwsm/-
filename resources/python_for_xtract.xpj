@@ -7177,7 +7177,7 @@ Begin_Section
 		Max_Number_of_Fibers = 4000
 
 		# Current drawing window properties - if left out, the default is used.
-		Window_Left = 2.492
+		Window_Left = 3.408
 		Window_Bottom = 2.180
 		Window_Height = 3.360
 	End_Builder
@@ -7373,33 +7373,6 @@ Begin_Section
 
 	# Define the loading data, choose Moment Curvature, Capacity Orbit, or PM Interaction for loading type.
 	# Required data not defined here is taken from default values.
-	Begin_Loading
-
-		NAME = 04#-2-H
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -15.00E+3
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMyy = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-	End_Loading
-	#---------------------------------------
-
 End_Section
 #---------------------------------------
 
