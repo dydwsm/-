@@ -1,8 +1,8 @@
-#为了处理midas中数据而学习Python
+# 为了处理midas中数据而学习Python
 
 
-def earthquake_response(pier_numlist, earth_style,filtered_df, str_contents,pier_num):
-    #该函数为输出地震响应内力的表格，格式为弯矩，剪力，轴力
+def earthquake_response(pier_numlist, earth_style, filtered_df, str_contents, pier_num):
+    # 该函数为输出地震响应内力的表格，格式为弯矩，剪力，轴力
     filtered_e1h = []
     filtered_e1z = []
     filtered_e1 = []
@@ -19,19 +19,19 @@ def earthquake_response(pier_numlist, earth_style,filtered_df, str_contents,pier
         condition1 = filtered_df[i]["荷载"] == earth_loading2
         filtered_e1h.append(filtered_df[i][condition0])
         filtered_e1z.append(filtered_df[i][condition1])
-        filtered_e1h[i].insert(2,'弯矩-z (kN*m)',filtered_e1h[i].pop('弯矩-z (kN*m)'))
+        filtered_e1h[i].insert(2, '弯矩-z (kN*m)', filtered_e1h[i].pop('弯矩-z (kN*m)'))
         filtered_e1h[i].insert(3, '剪力-y (kN)', filtered_e1h[i].pop('剪力-y (kN)'))
         filtered_e1h[i].insert(4, '轴向 (kN)', filtered_e1h[i].pop('轴向 (kN)'))
-        filtered_e1h[i] = filtered_e1h[i].drop(axis=1, columns=['剪力-z (kN)','扭矩 (kN*m)','弯矩-y (kN*m)','位置'])
+        filtered_e1h[i] = filtered_e1h[i].drop(axis=1, columns=['剪力-z (kN)', '扭矩 (kN*m)', '弯矩-y (kN*m)', '位置'])
         filtered_e1h[i] = filtered_e1h[i].reset_index(drop=True)
         filtered_e1h[i].index = range(filtered_e1h[i].shape[0])
-        filtered_e1z[i].insert(0,'弯矩-y (kN*m)',filtered_e1z[i].pop('弯矩-y (kN*m)'))
+        filtered_e1z[i].insert(0, '弯矩-y (kN*m)', filtered_e1z[i].pop('弯矩-y (kN*m)'))
         filtered_e1z[i].insert(1, '剪力-z (kN)', filtered_e1z[i].pop('剪力-z (kN)'))
         filtered_e1z[i].insert(2, '轴向 (kN)', filtered_e1z[i].pop('轴向 (kN)'))
         filtered_e1z[i].insert(3, '荷载', filtered_e1z[i].pop('荷载'))
         filtered_e1z[i] = filtered_e1z[i].drop(axis=1, columns=['剪力-y (kN)', '扭矩 (kN*m)', '弯矩-z (kN*m)', '位置'])
         filtered_e1z[i] = filtered_e1z[i].reset_index(drop=True)
-        filtered_e1.append(pd.concat([filtered_e1h[i],filtered_e1z[i]], axis=1))
+        filtered_e1.append(pd.concat([filtered_e1h[i], filtered_e1z[i]], axis=1))
         filtered_e1[i] = filtered_e1[i].round(0)
         dfs[pier_num[i]] = filtered_e1[i]
     # str_a = './resources/{}地震响应.xlsx'.format(earth_style)
@@ -42,8 +42,9 @@ def earthquake_response(pier_numlist, earth_style,filtered_df, str_contents,pier
         dfs[sheet_name].to_excel(writer, sheet_name=sheet_name, index=False)
     writer.save()
 
-def earthquakeAnddeadload_response(pier_numlist, earth_style,filtered_df, str_contents,pier_num):
-    #该函数为输出恒载和地震响应内力组合的表格，格式为竖向Pz,顺力Hy,横力Hx,顺弯Mx,横弯My,扭矩Mz
+
+def earthquakeAnddeadload_response(pier_numlist, earth_style, filtered_df, str_contents, pier_num):
+    # 该函数为输出恒载和地震响应内力组合的表格，格式为竖向Pz,顺力Hy,横力Hx,顺弯Mx,横弯My,扭矩Mz
 
     filtered_e1h = []
     filtered_e1z = []
@@ -78,8 +79,8 @@ def earthquakeAnddeadload_response(pier_numlist, earth_style,filtered_df, str_co
         condition6 = filtered_df[i]["荷载"] == earth_loading6
         condition7 = filtered_df[i]["荷载"] == earth_loading7
         condition8 = filtered_df[i]["荷载"] == earth_loading8
-        filtered_e1h.append(filtered_df[i][condition0 & (condition1 | condition2 | condition3 | condition4 )])
-        filtered_e1z.append(filtered_df[i][condition0 & (condition5 | condition6 | condition7 | condition8 )])
+        filtered_e1h.append(filtered_df[i][condition0 & (condition1 | condition2 | condition3 | condition4)])
+        filtered_e1z.append(filtered_df[i][condition0 & (condition5 | condition6 | condition7 | condition8)])
         # filtered_e1h[i].reindex(columns = ['轴向 (kN)', '剪力-z (kN)', '剪力-y (kN)', '弯矩-y (kN*m)', '弯矩-z (kN*m)', '扭矩 (kN*m)'])
         filtered_e1h[i].insert(1, '竖向Pz', filtered_e1h[i].pop('轴向 (kN)'))
         filtered_e1h[i].insert(2, '顺力Hy', filtered_e1h[i].pop('剪力-z (kN)'))
@@ -88,13 +89,13 @@ def earthquakeAnddeadload_response(pier_numlist, earth_style,filtered_df, str_co
         filtered_e1h[i].insert(5, '横弯My', filtered_e1h[i].pop('弯矩-z (kN*m)'))
         filtered_e1h[i].insert(6, '扭矩Mz', filtered_e1h[i].pop('扭矩 (kN*m)'))
         filtered_e1h[i] = filtered_e1h[i].reset_index(drop=True)
-        filtered_e1h[i].iloc[ 0, 1] = abs(min(filtered_e1h[i]["竖向Pz"], key=abs))
+        filtered_e1h[i].iloc[0, 1] = abs(min(filtered_e1h[i]["竖向Pz"], key=abs))
         filtered_e1h[i].iloc[0, 2] = abs(max(filtered_e1h[i]["顺力Hy"], key=abs))
         filtered_e1h[i].iloc[0, 3] = abs(max(filtered_e1h[i]["横力Hx"], key=abs))
         filtered_e1h[i].iloc[0, 4] = abs(max(filtered_e1h[i]["顺弯Mx"], key=abs))
         filtered_e1h[i].iloc[0, 5] = abs(max(filtered_e1h[i]["横弯My"], key=abs))
         filtered_e1h[i].iloc[0, 6] = abs(max(filtered_e1h[i]["扭矩Mz"], key=abs))
-        filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].index[[1,2,3]])
+        filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].index[[1, 2, 3]])
         # filtered_e1h[i] = filtered_e1h[i][:1] #只保留第一行,也可以
         filtered_e1h[i].iloc[0, 0] = pier_num[i]
 
@@ -114,9 +115,8 @@ def earthquakeAnddeadload_response(pier_numlist, earth_style,filtered_df, str_co
         filtered_e1z[i] = filtered_e1z[i].drop(filtered_e1z[i].index[[1, 2, 3]])
         filtered_e1z[i].iloc[0, 0] = pier_num[i]
 
-        filtered_e1.append(pd.concat([filtered_e1h[i],filtered_e1z[i]], axis=0))
+        filtered_e1.append(pd.concat([filtered_e1h[i], filtered_e1z[i]], axis=0))
         filtered_e1[i] = filtered_e1[i].round(0)
-
 
         dfs[pier_num[i]] = filtered_e1[i]
     # str_a = './resources/恒载1+{}地震响应.xlsx'.format(earth_style)
@@ -139,7 +139,8 @@ def earthquakeAnddeadload_response(pier_numlist, earth_style,filtered_df, str_co
     #     condition4 = filtered_e11["荷载"] == earth_loading4
     filtered_e11.to_excel(str_b)
 
-def earthquakeAnddeadload_response_dundi(pier_numlist, earth_style,filtered_df, str_contents,pier_num):
+
+def earthquakeAnddeadload_response_dundi(pier_numlist, earth_style, filtered_df, str_contents, pier_num):
     # 该函数为输出恒载和地震响应内力组合的表格，墩底，格式为竖向Pz,弯矩M
 
     filtered_e1h = []
@@ -185,7 +186,7 @@ def earthquakeAnddeadload_response_dundi(pier_numlist, earth_style,filtered_df, 
         filtered_e1h[i].iloc[0, 2] = abs(max(filtered_e1h[i]["弯矩M"], key=abs))
         filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].index[[1, 2, 3]])
         # filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].columns['剪力-z (kN)', '剪力-y (kN)', '弯矩-y (kN*m)', '扭矩 (kN*m)'], axis=1)
-        filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].columns[[4,5,6,7,8]], axis=1)
+        filtered_e1h[i] = filtered_e1h[i].drop(filtered_e1h[i].columns[[4, 5, 6, 7, 8]], axis=1)
 
         filtered_e1h[i].iloc[0, 0] = pier_num[i]
 
@@ -205,8 +206,7 @@ def earthquakeAnddeadload_response_dundi(pier_numlist, earth_style,filtered_df, 
     # str_a = './resources/恒载1+{}墩底地震响应.xlsx'.format(earth_style)
     # str_b = './resources/恒载+{}墩底地震响应.xlsx'.format(earth_style)
     # str_b = str_contents + '/恒载+{}墩底地震响应.xlsx'.format(earth_style)
-    str_b = str_contents + '/恒载+{}墩底地震响应'.format(earth_style)+ '+{}.xlsx'.format(datetime.now().strftime("%d_%H_%M"))
-
+    str_b = str_contents + '/恒载+{}墩底地震响应'.format(earth_style) + '+{}.xlsx'.format(datetime.now().strftime("%d_%H_%M"))
 
     # writer = pd.ExcelWriter(str_a, engine='xlsxwriter')
     # for sheet_name in dfs.keys():
@@ -224,10 +224,12 @@ def earthquakeAnddeadload_response_dundi(pier_numlist, earth_style,filtered_df, 
     #     condition4 = filtered_e11["荷载"] == earth_loading4
     filtered_e11.to_excel(str_b)
 
+
 import pandas as pd
 from datetime import datetime
 import os
 import shutil
+
 
 def main():
     file_name = "白沙洲引桥汉阳侧引桥50+75+50m-铁路墩-0804.xlsx"
@@ -242,13 +244,15 @@ def main():
     ###提取不重复的数据
     # a = df.drop_duplicates(subset=['单元'],keep='first')
     # print(a)
-    #把不重复d元素转换成list:
+    # 把不重复d元素转换成list:
     b = df['单元'].drop_duplicates().values.tolist()
     print(b)
     print(type(b))
     print(len(b))
-    #b1为墩顶，b2为墩底，b3为承台底
-    b1 = []; b2 = []; b3 = []
+    # b1为墩顶，b2为墩底，b3为承台底
+    b1 = [];
+    b2 = [];
+    b3 = []
     for i in range(len(b)):
         if i % 3 == 0:
             b1.append(b[i])
@@ -259,7 +263,7 @@ def main():
     # b_list为实际墩号的种类，数量
     b_list = []
     for i in range(len(b1)):
-        b_list.append([b1[i],b2[i],b3[i]])
+        b_list.append([b1[i], b2[i], b3[i]])
     print(b_list)
     print(len(b_list))
     ######################################################################################
@@ -291,17 +295,19 @@ def main():
     """
     下面要实现的内容：循环处理每一个sheet
     """
-    #输出E1和E2地震响应两张表格
+    # 输出E1和E2地震响应两张表格
     E1 = 'E1'
     E2 = 'E2'
-    earthquake_response(b_list,E1, filtered_df, str_contents,pier_num)
-    earthquake_response(b_list,E2, filtered_df, str_contents,pier_num)
+    earthquake_response(b_list, E1, filtered_df, str_contents, pier_num)
+    earthquake_response(b_list, E2, filtered_df, str_contents, pier_num)
 
-    #输出承台底的内力响应表格
-    earthquakeAnddeadload_response(b_list, E1, filtered_df, str_contents,pier_num)
-    earthquakeAnddeadload_response(b_list, E2, filtered_df, str_contents,pier_num)
+    # 输出承台底的内力响应表格
+    earthquakeAnddeadload_response(b_list, E1, filtered_df, str_contents, pier_num)
+    earthquakeAnddeadload_response(b_list, E2, filtered_df, str_contents, pier_num)
     # 输出墩底的内力响应表格
-    earthquakeAnddeadload_response_dundi(b_list, E1, filtered_df, str_contents,pier_num)
-    earthquakeAnddeadload_response_dundi(b_list, E2, filtered_df, str_contents,pier_num)
+    earthquakeAnddeadload_response_dundi(b_list, E1, filtered_df, str_contents, pier_num)
+    earthquakeAnddeadload_response_dundi(b_list, E2, filtered_df, str_contents, pier_num)
+
+
 if __name__ == '__main__':
     main()

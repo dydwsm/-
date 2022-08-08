@@ -14,7 +14,6 @@ Begin_Global
 	NAME = ÇÅ¶Õ¿¹Õð¼ìËã
 	VER = 3.08
 	UNITS = kN-m
-	HAS_ANALYZED = True
 
 	# Optional parameters
 	Author = FENERBAHCE
@@ -7161,68 +7160,6 @@ Begin_Section
 
 	# Define the loading data, choose Moment Curvature, Capacity Orbit, or PM Interaction for loading type.
 	# Required data not defined here is taken from default values.
-	Begin_Loading
-
-		NAME = 03#-2-H
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -4152
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMyy = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
-	End_Loading
-	#---------------------------------------
-
-	Begin_Loading
-
-		NAME = 03#-2-Z
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -4152
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMxx = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
-	End_Loading
-	#---------------------------------------
-
 End_Section
 #---------------------------------------
 
@@ -7442,7 +7379,7 @@ Begin_Section
 		TYPE = Moment Curvature
 
 		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -17.15E+3
+		ConstAxial = -15.00E+3
 
 		# Incrementing load parameters - Positive increments in a positive direction.
 		IncMyy = .1130
@@ -7460,103 +7397,6 @@ Begin_Section
 		BS_Tol = 4.448
 		BS_Max_Itter = 40
 
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
-	End_Loading
-	#---------------------------------------
-
-	Begin_Loading
-
-		NAME = 04#-2-Z
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -16.41E+3
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMxx = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
-	End_Loading
-	#---------------------------------------
-
-	Begin_Loading
-
-		NAME = 05#-2-H
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -16.60E+3
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMyy = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
-	End_Loading
-	#---------------------------------------
-
-	Begin_Loading
-
-		NAME = 05#-2-Z
-		TYPE = Moment Curvature
-
-		# Constant loads applied at first step - negative is read as compression.
-		ConstAxial = -15.94E+3
-
-		# Incrementing load parameters - Positive increments in a positive direction.
-		IncMxx = .1130
-
-		Use_Best_Fit = False
-
-		# Include Plastic Hinge length.
-		Calc_Moment_Rot = False
-
-		# Analysis Parameters.
-		Method = BiSection
-		N_Steps_Before_Yield = 10
-		N_Steps_After_Yield = 20
-		Multiple_On_First_Yield = 2
-		BS_Tol = 4.448
-		BS_Max_Itter = 40
-
-
-		Begin_LoadUserComments
-		User Comments 
-		End_LoadUserComments
 	End_Loading
 	#---------------------------------------
 
